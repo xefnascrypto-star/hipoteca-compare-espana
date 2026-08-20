@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HipotecaCompare España — Calculadora y comparador</title>
+<meta name="description" content="Calculadora de hipotecas y comparador orientativo de bancos españoles.">
+<style>
+:root{--bg:#07111f;--card:#0d1a2b;--card2:#102238;--line:#20344c;--text:#edf5ff;--muted:#9eb1c7;--accent:#38bdf8;--accent2:#22c55e;--danger:#fb7185;--shadow:0 18px 50px #0005}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(circle at 10% 0%,#123052 0,#07111f 38%,#050b14 100%);color:var(--text)}
+.container{max-width:1180px;margin:auto;padding:24px}
+header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0 28px}
+.logo{font-weight:900;font-size:24px;letter-spacing:-1px}.logo span{color:var(--accent)}
+.badge{font-size:12px;color:#bde9ff;border:1px solid #24506b;padding:8px 11px;border-radius:999px;background:#0a1d2c}
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;margin-bottom:22px}
+.card{background:linear-gradient(145deg,#0e1d30e8,#091525e8);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.hero .card{padding:30px}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.02;margin:0 0 16px;letter-spacing:-2.5px}.hero p{color:var(--muted);font-size:17px;line-height:1.6;max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}.stat{background:#0a1727;border:1px solid var(--line);border-radius:14px;padding:14px}.stat b{display:block;font-size:22px}.stat small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:390px 1fr;gap:22px}.panel{padding:24px}.panel h2{margin:0 0 18px;font-size:22px}
+label{display:block;color:#c5d5e6;font-size:13px;margin:14px 0 7px}input,select{width:100%;background:#081421;border:1px solid #294057;color:var(--text);border-radius:11px;padding:12px 13px;font-size:15px;outline:none}input:focus,select:focus{border-color:var(--accent)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.range{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:5px}
+.result{background:linear-gradient(135deg,#0d2940,#0b1828);border:1px solid #27516d;border-radius:18px;padding:20px;margin-top:18px}.result .big{font-size:38px;font-weight:900;color:#dff6ff}.result .muted{color:var(--muted);font-size:13px}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.mini div{background:#071321;border-radius:11px;padding:10px}.mini span{display:block;color:var(--muted);font-size:11px}.mini b{font-size:15px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}.chip{border:1px solid var(--line);background:#091727;color:#b9c9da;padding:9px 13px;border-radius:999px;cursor:pointer}.chip.active{background:#0b3145;border-color:#2a88b4;color:#dff7ff}
+.bank{display:grid;grid-template-columns:1.2fr .7fr .7fr .7fr auto;gap:12px;align-items:center;padding:17px 14px;border-top:1px solid var(--line)}.bank:first-of-type{border-top:0}.bankname{font-weight:800}.bankname small{display:block;color:var(--muted);font-weight:400;margin-top:3px}.rate{font-weight:800}.rate small{display:block;color:var(--muted);font-weight:400;font-size:11px}.btn{border:0;background:var(--accent);color:#03101a;font-weight:800;border-radius:10px;padding:10px 13px;cursor:pointer}.btn:hover{filter:brightness(1.08)}
+.notice{margin-top:18px;color:#a9b9c9;font-size:12px;line-height:1.55}.source{color:#8fd9ff}
+footer{padding:25px 0 40px;color:#8296aa;font-size:12px}
+@media(max-width:850px){.hero,.grid{grid-template-columns:1fr}.bank{grid-template-columns:1fr 1fr}.bank .btn{grid-column:1/-1}.stats{grid-template-columns:1fr}.container{padding:15px}}
+
+.ad-slot{margin:22px 0;padding:10px;border:1px dashed #294057;border-radius:16px;background:#081421aa;min-height:120px;display:flex;align-items:center;justify-content:center;color:#6f8499;font-size:11px;text-align:center}
+.ad-slot.top{min-height:100px}
+.ad-slot.rectangle{min-height:280px}
+.ad-slot.bottom{min-height:180px}
+.ad-placeholder{max-width:100%;line-height:1.5}
+</style>
+
+<!-- Google AdSense - Auto Ads -->
+<script async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713350835088557"
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="logo">Hipoteca<span>Compare</span> España</div>
+  <div class="badge">Calculadora + comparador</div>
+</header>
+<!-- ADSENSE: ANUNCIO SUPERIOR -->
+<div class="ad-slot top">
+  <ins class="adsbygoogle"
+       style="display:block;min-height:100px"
+       data-ad-client="ca-pub-7713350835088557"
+       data-ad-slot="AUTO"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+
+<section class="hero">
+ <div class="card">
+  <h1>¿Cuánto pagarías por tu hipoteca?</h1>
+  <p>Calcula tu cuota mensual, intereses totales y compara escenarios de hipoteca fija, variable y mixta con una selección de bancos españoles.</p>
+  <div class="stats">
+   <div class="stat"><b id="heroRate">2,86%</b><small>tipo de ejemplo</small></div>
+   <div class="stat"><b id="heroEuribor">2,855%</b><small>euríbor 12 meses</small></div>
+   <div class="stat"><b>80%</b><small>financiación orientativa</small></div>
+  </div>
+ </div>
+ <div class="card panel">
+  <h2>Tu escenario</h2>
+  <p style="color:var(--muted);line-height:1.6">Introduce precio, ahorro y plazo. La calculadora estima el préstamo y después puedes comparar bancos.</p>
+  <button class="btn" style="width:100%;margin-top:10px" onclick="document.getElementById('calc').scrollIntoView({behavior:'smooth'})">Empezar cálculo</button>
+ </div>
+</section>
+
+<!-- ADSENSE: ANUNCIO RECTANGULAR -->
+<div class="ad-slot rectangle">
+  <ins class="adsbygoogle"
+       style="display:block;min-height:100px"
+       data-ad-client="ca-pub-7713350835088557"
+       data-ad-slot="AUTO"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<section class="grid">
+ <div class="card panel" id="calc">
+  <h2>Calculadora hipotecaria</h2>
+  <label>Precio de la vivienda (€)</label>
+  <input id="price" type="number" value="250000" min="0" step="1000">
+  <label>Aportación / entrada (€)</label>
+  <input id="down" type="number" value="50000" min="0" step="1000">
+  <div class="row">
+   <div><label>Plazo (años)</label><input id="years" type="number" value="30" min="1" max="40"></div>
+   <div><label>Tipo (%)</label><input id="rate" type="number" value="2.86" min="0" max="20" step="0.01"></div>
+  </div>
+  <label>Tipo de hipoteca</label>
+  <select id="kind"><option>Fija</option><option>Variable</option><option>Mixta</option></select>
+  <label>Otros gastos iniciales estimados (€)</label>
+  <input id="costs" type="number" value="10000" min="0" step="500">
+  <div class="result">
+   <div class="muted">Cuota mensual estimada</div>
+   <div class="big" id="payment">0 €</div>
+   <div class="mini">
+    <div><span>Importe préstamo</span><b id="loan">0 €</b></div>
+    <div><span>Intereses totales</span><b id="interest">0 €</b></div>
+    <div><span>Total pagado</span><b id="total">0 €</b></div>
+    <div><span>Ahorro necesario</span><b id="cash">0 €</b></div>
+   </div>
+  </div>
+
+<!-- ADSENSE: ANUNCIO LATERAL / RECTANGULAR -->
+<div class="ad-slot ">
+  <ins class="adsbygoogle"
+       style="display:block;min-height:100px"
+       data-ad-client="ca-pub-7713350835088557"
+       data-ad-slot="AUTO"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+  <div class="notice">Cálculo francés simplificado. No incluye seguros, comisiones, impuestos ni productos vinculados salvo que se indiquen. Es una simulación, no una oferta bancaria.</div>
+ </div>
+
+ <div class="card panel">
+  <h2>Comparador de bancos españoles</h2>
+  <div class="toolbar">
+   <button class="chip active" data-filter="Todos">Todos</button>
+   <button class="chip" data-filter="Fija">Fija</button>
+   <button class="chip" data-filter="Variable">Variable</button>
+   <button class="chip" data-filter="Mixta">Mixta</button>
+  </div>
+  <div id="banks"></div>
+  <div class="notice">
+   <b>Datos orientativos:</b> las condiciones comerciales cambian con frecuencia y dependen del perfil, vinculación, importe, plazo y vivienda.
+   El euríbor oficial a 12 meses fue <b>2,855%</b> en julio de 2026 según Banco de España.
+   <span class="source">Fuente: Banco de España / BOE. Las ofertas deben verificarse en la web oficial de cada entidad antes de contratar.</span>
+  </div>
+ </div>
+</section>
+
+
+<!-- ADSENSE: ANUNCIO INFERIOR -->
+<div class="ad-slot bottom">
+  <ins class="adsbygoogle"
+       style="display:block;min-height:100px"
+       data-ad-client="ca-pub-7713350835088557"
+       data-ad-slot="AUTO"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<script>
+  // Inicializa los bloques AdSense presentes en la página.
+  document.querySelectorAll('.adsbygoogle').forEach(function () {
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+  });
+</script>
+
+<footer>HipotecaCompare España · Herramienta informativa · No constituye asesoramiento financiero.</footer>
+</div>
+
+<script>
+const banks=[
+ {n:"BBVA",t:"Fija",tin:2.95,tae:3.80,desc:"Hasta 30 años · condiciones según vinculación"},
+ {n:"Banco Santander",t:"Fija",tin:2.96,tae:3.70,desc:"Hasta 30 años · condiciones según perfil"},
+ {n:"Openbank",t:"Fija",tin:2.90,tae:3.65,desc:"Hasta 30 años · filial de Santander"},
+ {n:"Banco Sabadell",t:"Fija",tin:2.75,tae:3.70,desc:"Tipo orientativo · sujeto a condiciones"},
+ {n:"Unicaja",t:"Fija",tin:2.90,tae:3.80,desc:"Hasta 30 años · sujeto a vinculación"},
+ {n:"ING",t:"Fija",tin:3.75,tae:4.10,desc:"Hipoteca Naranja · condiciones según perfil"},
+ {n:"Ibercaja",t:"Fija",tin:2.30,tae:3.50,desc:"Hipoteca Vamos · revisar condiciones"},
+ {n:"Pibank",t:"Mixta",tin:1.99,tae:3.30,desc:"Ejemplo consultado en comparador · Euríbor + 0,68% después"},
+ {n:"Bankinter",t:"Fija",tin:3.20,tae:4.00,desc:"Condiciones sujetas a perfil y vinculación"},
+ {n:"ABANCA",t:"Fija",tin:2.85,tae:3.75,desc:"Hipoteca Mari Carmen · revisar condiciones"}
+];
+const euro=2.855;
+const eur=v=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+function calcPayment(P, annual, months){const r=annual/100/12; if(!r)return P/months; return P*r*Math.pow(1+r,months)/(Math.pow(1+r,months)-1)}
+function calculate(){
+ const price=+priceEl.value||0, down=+downEl.value||0, years=+yearsEl.value||30, rate=+rateEl.value||0, costs=+costsEl.value||0;
+ const P=Math.max(0,price-down), n=years*12, m=calcPayment(P,rate,n), total=m*n, interest=Math.max(0,total-P);
+ payment.textContent=eur(m); loan.textContent=eur(P); document.getElementById('interest').textContent=eur(interest); document.getElementById('total').textContent=eur(total); cash.textContent=eur(down+costs);
+}
+const priceEl=document.getElementById('price'),downEl=document.getElementById('down'),yearsEl=document.getElementById('years'),rateEl=document.getElementById('rate'),costsEl=document.getElementById('costs');
+[priceEl,downEl,yearsEl,rateEl,costsEl].forEach(x=>x.addEventListener('input',calculate));
+function render(filter='Todos'){
+ const price=+priceEl.value||250000, down=+downEl.value||50000, P=Math.max(0,price-down), years=+yearsEl.value||30;
+ document.getElementById('banks').innerHTML=banks.filter(b=>filter==='Todos'||b.t===filter).map(b=>{
+  const m=calcPayment(P,b.tin,years*12);
+  return `<div class="bank">
+   <div class="bankname">${b.n}<small>${b.t} · ${b.desc}</small></div>
+   <div class="rate">${b.tin.toFixed(2)}%<small>TIN orientativo</small></div>
+   <div class="rate">${b.tae.toFixed(2)}%<small>TAE orientativa</small></div>
+   <div class="rate">${eur(m)}<small>cuota estimada</small></div>
+   <button class="btn" onclick="useRate(${b.tin})">Calcular</button>
+  </div>`;
+ }).join('');
+}
+function useRate(r){rateEl.value=r; calculate(); document.getElementById('calc').scrollIntoView({behavior:'smooth'});}
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');render(c.dataset.filter)}));
+[priceEl,downEl,yearsEl].forEach(x=>x.addEventListener('input',()=>render(document.querySelector('.chip.active').dataset.filter)));
+calculate();render();
+</script>
+</body>
+</html>
