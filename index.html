@@ -75,14 +75,27 @@ body::before{
 }
 .container{max-width:1180px;margin:auto;padding:24px;position:relative;z-index:1}
 
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
 header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 0 30px;border-bottom:1px solid var(--line)}
 .logo{font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.5px}
 .logo span{color:var(--gold-soft);font-style:italic;font-weight:500}
-.badge{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:#0a2427}
+.badge{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);border:1px dashed var(--line);padding:8px 12px;border-radius:999px;background:#0a2427}
 
 .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;margin:28px 0 22px}
-.card{background:linear-gradient(155deg,#123338 0%,#0c2427 100%);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+.card{
+  background:
+    repeating-linear-gradient(180deg, transparent 0 27px, #ffffff07 27px 28px),
+    linear-gradient(155deg,#123338 0%,#0c2427 100%);
+  border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);
+  animation:fadeUp .6s ease both;
+}
 .hero .card{padding:34px;position:relative;overflow:hidden}
+.hero .card.tilt{transform:rotate(1.1deg);animation-delay:.08s}
+.hero .card.tilt:hover{transform:rotate(0deg)}
+.grid .card{animation-delay:.05s}
 .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.05;margin:0 0 16px;letter-spacing:-.5px}
 .hero p{color:var(--muted);font-size:16px;line-height:1.65;max-width:640px}
 
@@ -128,13 +141,16 @@ select{font-family:var(--body)}
 .mini b{font-family:var(--mono);font-size:14.5px}
 
 .toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:16px}
-.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:#0a2124;color:var(--muted);padding:9px 14px;border-radius:999px;cursor:pointer}
+.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:#0a2124;color:var(--muted);padding:9px 14px;border-radius:999px;cursor:pointer;transition:border-color .15s ease,color .15s ease,background .15s ease}
+.chip:hover{border-color:var(--teal);color:var(--text)}
 .chip.active{background:#173d40;border-color:var(--teal);color:var(--text)}
 
-.bank{display:grid;grid-template-columns:1.2fr .7fr .7fr .7fr auto;gap:12px;align-items:center;padding:16px 4px;border-top:1px solid var(--line)}
+.bank{display:grid;grid-template-columns:1.2fr .7fr .7fr .7fr auto;gap:12px;align-items:center;padding:16px 4px;border-top:1px solid var(--line);transition:background .18s ease}
 .bank:first-of-type{border-top:0}
-.bankname{font-weight:700}
+.bank:hover{background:#0a242466}
+.bankname{font-weight:700;display:flex;align-items:flex-start;gap:10px}
 .bankname small{display:block;color:var(--muted);font-weight:400;margin-top:3px;font-size:12px}
+.bankstamp{flex-shrink:0;width:30px;height:30px;margin-top:1px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:12px;color:var(--gold-soft);background:#0a2427}
 .rate{font-family:var(--mono);font-weight:600}
 .rate small{display:block;color:var(--muted);font-weight:400;font-size:10.5px;font-family:var(--body)}
 .btn{border:0;background:var(--gold);color:#1c1404;font-weight:700;font-family:var(--body);border-radius:4px;padding:10px 14px;cursor:pointer}
@@ -156,11 +172,15 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
 
 @media(max-width:850px){
   .hero,.grid{grid-template-columns:1fr}
+  .hero .card.tilt{transform:none}
   .bank{grid-template-columns:1fr 1fr}
   .bank .btn{grid-column:1/-1}
   .stats{grid-template-columns:1fr 1fr}
   .sello{grid-column:1/-1;justify-self:center;margin-top:6px}
   .container{padding:15px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 
@@ -196,7 +216,7 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
    <div class="sello"><b id="heroEuribor">2,855%</b><small>Euríbor 12M</small><em>Banco de España</em></div>
   </div>
  </div>
- <div class="card panel">
+ <div class="card panel tilt">
   <h2>Tu escenario</h2>
   <p style="color:var(--muted);line-height:1.6">Introduce precio, ahorro y plazo. La calculadora estima el préstamo y después puedes comparar bancos.</p>
   <button class="btn" style="width:100%;margin-top:14px" onclick="document.getElementById('calc').scrollIntoView({behavior:'smooth'})">Empezar cálculo</button>
@@ -322,7 +342,7 @@ function render(filter='Todos'){
  document.getElementById('banks').innerHTML=banks.filter(b=>filter==='Todos'||b.t===filter).map(b=>{
   const m=calcPayment(P,b.tin,years*12);
   return `<div class="bank">
-   <div class="bankname">${b.n}<small>${b.t} · ${b.desc}</small></div>
+   <div class="bankname"><span class="bankstamp">${b.n[0]}</span><span>${b.n}<small>${b.t} · ${b.desc}</small></span></div>
    <div class="rate">${b.tin.toFixed(2)}%<small>TIN orientativo</small></div>
    <div class="rate">${b.tae.toFixed(2)}%<small>TAE orientativa</small></div>
    <div class="rate">${eur(m)}<small>cuota estimada</small></div>
