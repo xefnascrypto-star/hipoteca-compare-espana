@@ -42,6 +42,54 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo se calcula la cuota mensual de una hipoteca?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La mayoría de hipotecas en España usan el sistema de amortización francés: la cuota mensual es constante durante todo el plazo, pero al principio se paga sobre todo intereses y con el tiempo aumenta la parte de capital amortizado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre el TIN y la TAE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El TIN es el porcentaje que el banco aplica para calcular los intereses. La TAE incluye el TIN más comisiones y otros gastos, por lo que refleja mejor el coste real anual y es la referencia más fiable para comparar hipotecas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hipoteca fija, variable o mixta: ¿cuál elegir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La fija mantiene el mismo interés durante todo el plazo. La variable se recalcula periódicamente según el Euríbor. La mixta combina un periodo inicial fijo con el resto a variable. La elección depende de la tolerancia al riesgo de cada persona."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto ahorro necesito para comprar una vivienda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los bancos suelen financiar hasta un 80% del valor de tasación o compra, por lo que se necesita cubrir al menos el 20% restante más entre un 10% y un 15% adicional en gastos de compraventa e hipoteca."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es el Euríbor y cómo afecta a mi hipoteca?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El Euríbor es el tipo al que los bancos europeos se prestan dinero entre sí y es el índice de referencia más usado en España para hipotecas variables y mixtas. Si el Euríbor sube, la cuota de una hipoteca variable sube, y si baja, la cuota baja."
+      }
+    }
+  ]
+}
+</script>
 
 <style>
 :root{
@@ -170,6 +218,18 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
 .ad-slot.rectangle{min-height:280px}
 .ad-slot.bottom{min-height:180px}
 
+.learn{margin:22px 0}
+.learn h2{font-family:var(--display);font-weight:600;font-size:24px;margin:0 0 6px}
+.learn>.card>p.lead{color:var(--muted);font-size:14px;line-height:1.6;max-width:680px;margin:0 0 20px}
+.faq-item{border-top:1px solid var(--line);padding:16px 2px}
+.faq-item:first-of-type{border-top:0}
+.faq-item h3{font-family:var(--body);font-weight:700;font-size:15px;margin:0 0 8px;color:var(--text)}
+.faq-item p{color:var(--muted);font-size:13.5px;line-height:1.65;margin:0}
+.glossary{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;margin-top:8px}
+.glossary dt{font-family:var(--mono);font-weight:600;color:var(--gold-soft);font-size:13px;margin-top:12px}
+.glossary dd{color:var(--muted);font-size:13px;line-height:1.55;margin:4px 0 0}
+@media(max-width:850px){.glossary{grid-template-columns:1fr}}
+
 @media(max-width:850px){
   .hero,.grid{grid-template-columns:1fr}
   .hero .card.tilt{transform:none}
@@ -285,6 +345,71 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
    El euríbor oficial a 12 meses fue <b>2,855%</b> en julio de 2026 según Banco de España.
    <span class="source">Fuente: Banco de España / BOE. Las ofertas deben verificarse en la web oficial de cada entidad antes de contratar.</span>
   </div>
+ </div>
+</section>
+
+<section class="learn">
+ <div class="card panel">
+  <h2>Preguntas frecuentes sobre hipotecas en España</h2>
+  <p class="lead">Antes de firmar una hipoteca conviene tener claros unos pocos conceptos. Aquí respondemos a las dudas más habituales.</p>
+
+  <div class="faq-item">
+   <h3>¿Cómo se calcula la cuota mensual de una hipoteca?</h3>
+   <p>La inmensa mayoría de hipotecas en España usan el sistema de amortización francés: la cuota mensual es siempre la misma durante todo el plazo, pero al principio pagas sobre todo intereses y muy poco capital, y con el tiempo esa proporción se invierte. La cuota depende del importe del préstamo, el tipo de interés y el plazo en años. Nuestra calculadora aplica esta fórmula de forma simplificada, sin incluir seguros ni comisiones.</p>
+  </div>
+
+  <div class="faq-item">
+   <h3>¿Qué diferencia hay entre el TIN y la TAE?</h3>
+   <p>El TIN (Tipo de Interés Nominal) es el porcentaje que el banco aplica sobre el capital pendiente para calcular los intereses. La TAE (Tasa Anual Equivalente) va más allá: incluye el TIN más las comisiones y otros gastos asociados, por lo que refleja mejor el coste real anual del préstamo. Para comparar hipotecas entre bancos, la TAE es siempre la referencia más fiable, no el TIN por sí solo.</p>
+  </div>
+
+  <div class="faq-item">
+   <h3>Hipoteca fija, variable o mixta: ¿cuál elegir?</h3>
+   <p>En una hipoteca fija el tipo de interés no cambia en todo el plazo, así que la cuota es predecible desde el primer día. En una variable, el interés se recalcula periódicamente (normalmente cada 6 o 12 meses) sumando un diferencial al Euríbor, por lo que la cuota sube o baja con el mercado. La mixta combina ambas: unos primeros años a tipo fijo y el resto a variable. No hay una opción mejor en general; depende de tu tolerancia al riesgo y de tus previsiones sobre la evolución de los tipos.</p>
+  </div>
+
+  <div class="faq-item">
+   <h3>¿Cuánto ahorro necesito para comprar una vivienda?</h3>
+   <p>Como norma orientativa, los bancos en España suelen financiar hasta un 80% del valor de tasación o compra de la vivienda habitual (puede ser menor para segundas residencias). Eso significa que necesitas cubrir de tu bolsillo, al menos, el 20% restante más los gastos de compraventa e hipoteca (notaría, registro, gestoría, impuestos y tasación), que suelen suponer entre un 10% y un 15% adicional del precio.</p>
+  </div>
+
+  <div class="faq-item">
+   <h3>¿Qué es el Euríbor y cómo afecta a mi hipoteca?</h3>
+   <p>El Euríbor es el tipo de interés al que los principales bancos europeos se prestan dinero entre sí, y es el índice de referencia más usado en España para las hipotecas variables y mixtas. Si tu hipoteca es variable, tu cuota se revisa periódicamente sumando un diferencial fijo al valor del Euríbor en ese momento: si el Euríbor sube, tu cuota sube, y si baja, tu cuota baja.</p>
+  </div>
+ </div>
+</section>
+
+<section class="learn">
+ <div class="card panel">
+  <h2>Glosario hipotecario</h2>
+  <p class="lead">Los términos que más se repiten al comparar hipotecas, explicados en pocas palabras.</p>
+  <dl class="glossary">
+   <div>
+    <dt>TIN</dt><dd>Tipo de Interés Nominal. El porcentaje que el banco aplica para calcular los intereses, sin incluir comisiones.</dd>
+   </div>
+   <div>
+    <dt>TAE</dt><dd>Tasa Anual Equivalente. Incluye el TIN más comisiones y gastos; es la cifra que mejor permite comparar ofertas.</dd>
+   </div>
+   <div>
+    <dt>Euríbor</dt><dd>Índice de referencia interbancario europeo usado para calcular la cuota en hipotecas variables y mixtas.</dd>
+   </div>
+   <div>
+    <dt>Diferencial</dt><dd>Porcentaje fijo que el banco suma al Euríbor en una hipoteca variable para obtener el tipo aplicado.</dd>
+   </div>
+   <div>
+    <dt>Amortización francesa</dt><dd>Sistema donde la cuota mensual es constante, pero la parte de intereses y capital varía con el tiempo.</dd>
+   </div>
+   <div>
+    <dt>Tasación</dt><dd>Valoración oficial de la vivienda, realizada por una entidad homologada, que el banco usa para decidir cuánto presta.</dd>
+   </div>
+   <div>
+    <dt>Vinculación</dt><dd>Productos adicionales (nómina, seguros, tarjetas) que el banco pide contratar a cambio de mejorar el tipo de interés.</dd>
+   </div>
+   <div>
+    <dt>Comisión de apertura</dt><dd>Coste que algunos bancos cobran una única vez al formalizar el préstamo, en porcentaje sobre el capital.</dd>
+   </div>
+  </dl>
  </div>
 </section>
 
