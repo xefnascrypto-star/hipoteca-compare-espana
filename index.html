@@ -214,6 +214,11 @@ footer .legal-links a{color:var(--muted);text-decoration:none;margin:0 8px}
 footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
 
 .learn{margin:22px 0}
+
+.prepay-results{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.prepay-results .result{margin-top:0}
+.prepay-results .result h3{font-family:var(--body);font-size:13px;font-weight:700;margin:0 0 6px;color:var(--text)}
+@media(max-width:850px){.prepay-results{grid-template-columns:1fr}}
 .learn h2{font-family:var(--display);font-weight:600;font-size:24px;margin:0 0 6px}
 .learn>.card>p.lead{color:var(--muted);font-size:14px;line-height:1.6;max-width:680px;margin:0 0 20px}
 .faq-item{border-top:1px solid var(--line);padding:16px 2px}
@@ -311,6 +316,44 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
    El euríbor oficial a 12 meses fue <b>2,855%</b> en julio de 2026 según Banco de España.
    <span class="source">Fuente: Banco de España / BOE. Las ofertas deben verificarse en la web oficial de cada entidad antes de contratar.</span>
   </div>
+ </div>
+</section>
+
+<section class="learn">
+ <div class="card panel">
+  <h2>Calculadora de amortización anticipada</h2>
+  <p class="lead">Si adelantas capital de tu hipoteca, puedes elegir entre pagar menos cada mes o terminar antes. Compara aquí las dos opciones.</p>
+  <div class="row">
+   <div><label>Capital pendiente (€)</label><input id="pCapital" type="number" value="200000" min="0" step="1000"></div>
+   <div><label>Años restantes</label><input id="pYears" type="number" value="25" min="1" max="40"></div>
+  </div>
+  <div class="row">
+   <div><label>Tipo de interés (%)</label><input id="pRate" type="number" value="2.86" min="0" max="20" step="0.01"></div>
+   <div><label>Aportación extra (€)</label><input id="pExtra" type="number" value="10000" min="0" step="500"></div>
+  </div>
+  <div class="prepay-results">
+   <div class="result">
+    <h3>Opción A · Reducir cuota</h3>
+    <div class="muted">Nueva cuota mensual</div>
+    <div class="big" id="pNewPayment" style="font-size:26px">0 €</div>
+    <div class="mini">
+     <div><span>Cuota actual</span><b id="pOldPaymentA">0 €</b></div>
+     <div><span>Ahorro mensual</span><b id="pMonthlySaving">0 €</b></div>
+     <div><span>Intereses ahorrados</span><b id="pInterestSavingA">0 €</b></div>
+    </div>
+   </div>
+   <div class="result">
+    <h3>Opción B · Reducir plazo</h3>
+    <div class="muted">Mismo pago mensual, hipoteca más corta</div>
+    <div class="big" id="pNewTerm" style="font-size:26px">0 meses</div>
+    <div class="mini">
+     <div><span>Plazo actual</span><b id="pOldTerm">0 meses</b></div>
+     <div><span>Meses de menos</span><b id="pMonthsSaved">0</b></div>
+     <div><span>Intereses ahorrados</span><b id="pInterestSavingB">0 €</b></div>
+    </div>
+   </div>
+  </div>
+  <div class="notice">Cálculo orientativo con sistema francés, sin comisión por amortización anticipada. Algunos bancos cobran una comisión (habitualmente hasta 0,25%-2% según el caso) que reduciría el ahorro real; consúltalo en tu contrato.</div>
  </div>
 </section>
 
@@ -429,6 +472,46 @@ function useRate(r){rateEl.value=r; calculate(); document.getElementById('calc')
 document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');render(c.dataset.filter)}));
 [priceEl,downEl,yearsEl].forEach(x=>x.addEventListener('input',()=>render(document.querySelector('.chip.active').dataset.filter)));
 calculate();render();
+
+// --- Amortización anticipada ---
+function monthsFromPayment(P, annual, m){
+ const r=annual/100/12;
+ if(!r) return P/m;
+ if(m<=P*r) return Infinity; // la cuota no cubre ni los intereses
+ return Math.log(m/(m-P*r))/Math.log(1+r);
+}
+function calcPrepay(){
+ const P0=+document.getElementById('pCapital').value||0;
+ const years=+document.getElementById('pYears').value||1;
+ const rate=+document.getElementById('pRate').value||0;
+ const extra=+document.getElementById('pExtra').value||0;
+ const n0=years*12;
+ const P1=Math.max(0,P0-extra);
+
+ const m0=calcPayment(P0,rate,n0);
+ const interestOriginal=m0*n0-P0;
+
+ // Opción A: reducir cuota, mismo plazo
+ const m1=calcPayment(P1,rate,n0);
+ const interestA=m1*n0-P1;
+
+ // Opción B: reducir plazo, misma cuota
+ const n1=monthsFromPayment(P1,rate,m0);
+ const n1r=isFinite(n1)?Math.round(n1):n0;
+ const interestB=m0*n1r-P1;
+
+ document.getElementById('pNewPayment').textContent=eur(m1);
+ document.getElementById('pOldPaymentA').textContent=eur(m0);
+ document.getElementById('pMonthlySaving').textContent=eur(Math.max(0,m0-m1));
+ document.getElementById('pInterestSavingA').textContent=eur(Math.max(0,interestOriginal-interestA));
+
+ document.getElementById('pNewTerm').textContent=n1r+' meses';
+ document.getElementById('pOldTerm').textContent=n0+' meses';
+ document.getElementById('pMonthsSaved').textContent=Math.max(0,n0-n1r);
+ document.getElementById('pInterestSavingB').textContent=eur(Math.max(0,interestOriginal-interestB));
+}
+['pCapital','pYears','pRate','pExtra'].forEach(id=>document.getElementById(id).addEventListener('input',calcPrepay));
+calcPrepay();
 </script>
 </body>
 </html>
