@@ -239,7 +239,7 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
 .glossary{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;margin-top:8px}
 .glossary dt{font-family:var(--mono);font-weight:600;color:var(--gold-soft);font-size:13px;margin-top:12px}
 .glossary dd{color:var(--muted);font-size:13px;line-height:1.55;margin:4px 0 0}
-@media(max-width:850px){glossary{grid-template-columns:1fr}}
+@media(max-width:850px){.glossary{grid-template-columns:1fr}}
 
 @media(max-width:850px){
   .hero,.grid{grid-template-columns:1fr}
@@ -324,7 +324,7 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
   <div id="banks"></div>
   <div class="notice">
    <b>Datos orientativos:</b> las condiciones comerciales cambian con frecuencia y dependen del perfil, vinculación, importe, plazo y vivienda.
-   El euríbor oficial a 12 meses fue <b>2,855%</b> en julio de 2026 según Banco de España.
+   El euríbor oficial a 12 meses es del <b id="euriborNoticeText">2,855%</b> según los últimos datos oficiales.
    <span class="source">Fuente: Banco de España / BOE. Las ofertas deben verificarse en la web oficial de cada entidad antes de contratar.</span>
   </div>
  </div>
@@ -447,6 +447,24 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
 </div>
 
 <script>
+// --- Automatización del Euríbor vía API ---
+async function actualizarEuriborAPI() {
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/EUR');
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.euribor) {
+        const valor = parseFloat(data.euribor).toFixed(3) + '%';
+        document.getElementById('heroEuribor').textContent = valor;
+        document.getElementById('euriborNoticeText').textContent = valor;
+      }
+    }
+  } catch (err) {
+    console.log('No se pudo cargar la API del Euríbor, se mantiene la cifra por defecto.', err);
+  }
+}
+actualizarEuriborAPI();
+
 const banks=[
  {n:"BBVA",t:"Fija",tin:2.95,tae:3.80,desc:"Hasta 30 años · condiciones según vinculación", link:"#"},
  {n:"Banco Santander",t:"Fija",tin:2.96,tae:3.70,desc:"Hasta 30 años · condiciones según perfil", link:"#"},
@@ -489,7 +507,7 @@ function render(filter='Todos'){
 }
 
 function useRate(r){rateEl.value=r; calculate(); document.getElementById('calc').scrollIntoView({behavior:'smooth'});}
-document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');render(c.dataset.filter)}));
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip.active').forEach(x=>x.classList.remove('active'));c.classList.add('active');render(c.dataset.filter)}));
 [priceEl,downEl,yearsEl].forEach(x=>x.addEventListener('input',()=>render(document.querySelector('.chip.active').dataset.filter)));
 calculate();render();
 
