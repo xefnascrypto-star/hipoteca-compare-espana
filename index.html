@@ -211,7 +211,7 @@ select{font-family:var(--body)}
 .bankstamp{flex-shrink:0;width:30px;height:30px;margin-top:1px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:12px;color:var(--gold-soft);background:#0a2427}
 .rate{font-family:var(--mono);font-weight:600}
 .rate small{display:block;color:var(--muted);font-weight:400;font-size:10.5px;font-family:var(--body)}
-.btn{border:0;background:var(--gold);color:#1c1404;font-weight:700;font-family:var(--body);border-radius:4px;padding:10px 14px;cursor:pointer}
+.btn{border:0;background:var(--gold);color:#1c1404;font-weight:700;font-family:var(--body);border-radius:4px;padding:10px 14px;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
 .btn:hover{background:var(--gold-soft)}
 
 .notice{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.6;border-top:1px dashed var(--line);padding-top:14px}
@@ -219,6 +219,7 @@ select{font-family:var(--body)}
 .source{color:var(--teal)}
 
 footer{padding:26px 0 40px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);margin-top:10px;text-align:center;font-family:var(--mono)}
+footer .disclaimer{max-width:850px;margin:0 auto 14px;line-height:1.6;font-family:var(--body);font-size:11.5px;color:var(--muted)}
 footer .legal-links{margin-top:10px}
 footer .legal-links a{color:var(--muted);text-decoration:none;margin:0 8px}
 footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
@@ -238,7 +239,7 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
 .glossary{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;margin-top:8px}
 .glossary dt{font-family:var(--mono);font-weight:600;color:var(--gold-soft);font-size:13px;margin-top:12px}
 .glossary dd{color:var(--muted);font-size:13px;line-height:1.55;margin:4px 0 0}
-@media(max-width:850px){.glossary{grid-template-columns:1fr}}
+@media(max-width:850px){glossary{grid-template-columns:1fr}}
 
 @media(max-width:850px){
   .hero,.grid{grid-template-columns:1fr}
@@ -433,7 +434,10 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
 </section>
 
 <footer>
-  HipotecaCompare España · Herramienta informativa · No constituye asesoramiento financiero.
+  <div class="disclaimer">
+    <strong>Aviso de responsabilidad financiera:</strong> hipotecacomparees.online es un portal informativo e independiente. No somos una entidad bancaria, prestamista ni intermediario de crédito regulado por el Banco de España. La información expuesta tiene carácter puramente orientativo y no constituye asesoramiento financiero formal.
+  </div>
+  HipotecaCompare España · Herramienta informativa · Todos los derechos reservados.
   <div class="legal-links">
     <a href="/aviso-legal.html">Aviso legal</a> ·
     <a href="/privacidad.html">Privacidad</a> ·
@@ -444,16 +448,16 @@ footer .legal-links a:hover{color:var(--teal);text-decoration:underline}
 
 <script>
 const banks=[
- {n:"BBVA",t:"Fija",tin:2.95,tae:3.80,desc:"Hasta 30 años · condiciones según vinculación"},
- {n:"Banco Santander",t:"Fija",tin:2.96,tae:3.70,desc:"Hasta 30 años · condiciones según perfil"},
- {n:"Openbank",t:"Fija",tin:2.90,tae:3.65,desc:"Hasta 30 años · filial de Santander"},
- {n:"Banco Sabadell",t:"Fija",tin:2.75,tae:3.70,desc:"Tipo orientativo · sujeto a condiciones"},
- {n:"Unicaja",t:"Fija",tin:2.90,tae:3.80,desc:"Hasta 30 años · sujeto a vinculación"},
- {n:"ING",t:"Fija",tin:3.75,tae:4.10,desc:"Hipoteca Naranja · condiciones según perfil"},
- {n:"Ibercaja",t:"Fija",tin:2.30,tae:3.50,desc:"Hipoteca Vamos · revisar condiciones"},
- {n:"Pibank",t:"Mixta",tin:1.99,tae:3.30,desc:"Ejemplo consultado en comparador · Euríbor + 0,68% después"},
- {n:"Bankinter",t:"Fija",tin:3.20,tae:4.00,desc:"Condiciones sujetas a perfil y vinculación"},
- {n:"ABANCA",t:"Fija",tin:2.85,tae:3.75,desc:"Hipoteca Mari Carmen · revisar condiciones"}
+ {n:"BBVA",t:"Fija",tin:2.95,tae:3.80,desc:"Hasta 30 años · condiciones según vinculación", link:"#"},
+ {n:"Banco Santander",t:"Fija",tin:2.96,tae:3.70,desc:"Hasta 30 años · condiciones según perfil", link:"#"},
+ {n:"Openbank",t:"Fija",tin:2.90,tae:3.65,desc:"Hasta 30 años · filial de Santander", link:"#"},
+ {n:"Banco Sabadell",t:"Fija",tin:2.75,tae:3.70,desc:"Tipo orientativo · sujeto a condiciones", link:"#"},
+ {n:"Unicaja",t:"Fija",tin:2.90,tae:3.80,desc:"Hasta 30 años · sujeto a vinculación", link:"#"},
+ {n:"ING",t:"Fija",tin:3.75,tae:4.10,desc:"Hipoteca Naranja · condiciones según perfil", link:"#"},
+ {n:"Ibercaja",t:"Fija",tin:2.30,tae:3.50,desc:"Hipoteca Vamos · revisar condiciones", link:"#"},
+ {n:"Pibank",t:"Mixta",tin:1.99,tae:3.30,desc:"Ejemplo consultado en comparador · Euríbor + 0,68% después", link:"#"},
+ {n:"Bankinter",t:"Fija",tin:3.20,tae:4.00,desc:"Condiciones sujetas a perfil y vinculación", link:"#"},
+ {n:"ABANCA",t:"Fija",tin:2.85,tae:3.75,desc:"Hipoteca Mari Carmen · revisar condiciones", link:"#"}
 ];
 const euro=2.855;
 const eur=v=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
@@ -465,19 +469,25 @@ function calculate(){
 }
 const priceEl=document.getElementById('price'),downEl=document.getElementById('down'),yearsEl=document.getElementById('years'),rateEl=document.getElementById('rate'),costsEl=document.getElementById('costs');
 [priceEl,downEl,yearsEl,rateEl,costsEl].forEach(x=>x.addEventListener('input',calculate));
+
 function render(filter='Todos'){
  const price=+priceEl.value||250000, down=+downEl.value||50000, P=Math.max(0,price-down), years=+yearsEl.value||30;
  document.getElementById('banks').innerHTML=banks.filter(b=>filter==='Todos'||b.t===filter).map(b=>{
   const m=calcPayment(P,b.tin,years*12);
+  const actionBtn = (b.link && b.link !== '#') 
+    ? `<a href="${b.link}" target="_blank" rel="sponsored nofollow" class="btn">Ver Oferta</a>` 
+    : `<button class="btn" onclick="useRate(${b.tin})">Calcular</button>`;
+  
   return `<div class="bank">
    <div class="bankname"><span class="bankstamp">${b.n[0]}</span><span>${b.n}<small>${b.t} · ${b.desc}</small></span></div>
    <div class="rate">${b.tin.toFixed(2)}%<small>TIN orientativo</small></div>
    <div class="rate">${b.tae.toFixed(2)}%<small>TAE orientativa</small></div>
    <div class="rate">${eur(m)}<small>cuota estimada</small></div>
-   <button class="btn" onclick="useRate(${b.tin})">Calcular</button>
+   ${actionBtn}
   </div>`;
  }).join('');
 }
+
 function useRate(r){rateEl.value=r; calculate(); document.getElementById('calc').scrollIntoView({behavior:'smooth'});}
 document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');render(c.dataset.filter)}));
 [priceEl,downEl,yearsEl].forEach(x=>x.addEventListener('input',()=>render(document.querySelector('.chip.active').dataset.filter)));
@@ -487,7 +497,7 @@ calculate();render();
 function monthsFromPayment(P, annual, m){
  const r=annual/100/12;
  if(!r) return P/m;
- if(m<=P*r) return Infinity; // la cuota no cubre ni los intereses
+ if(m<=P*r) return Infinity;
  return Math.log(m/(m-P*r))/Math.log(1+r);
 }
 function calcPrepay(){
