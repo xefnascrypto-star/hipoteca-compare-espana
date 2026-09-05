@@ -18,6 +18,10 @@ gtag('config','G-G3GF3XS28J');
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="theme-color" content="#0a2023">
 <link rel="canonical" href="https://hipotecacomparees.online/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HipotecaCompare España">
@@ -25,9 +29,14 @@ gtag('config','G-G3GF3XS28J');
 <meta property="og:description" content="Simula tu cuota hipotecaria, compara tipos y consulta el Euríbor oficial y guías para comprar vivienda en España.">
 <meta property="og:url" content="https://hipotecacomparees.online/">
 <meta property="og:locale" content="es_ES">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://hipotecacomparees.online/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HipotecaCompare España - calculadora y guía independiente de hipotecas">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Calculadora de Hipotecas España 2026">
 <meta name="twitter:description" content="Simula tu cuota hipotecaria y compara escenarios en España.">
+<meta name="twitter:image" content="https://hipotecacomparees.online/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,10 +47,18 @@ gtag('config','G-G3GF3XS28J');
   "@context":"https://schema.org",
   "@graph":[
     {
+      "@type":"Organization",
+      "@id":"https://hipotecacomparees.online/#organization",
+      "name":"HipotecaCompare España",
+      "url":"https://hipotecacomparees.online/",
+      "logo":{"@type":"ImageObject","url":"https://hipotecacomparees.online/logo.PNG"}
+    },
+    {
       "@type":"WebSite",
       "@id":"https://hipotecacomparees.online/#website",
       "url":"https://hipotecacomparees.online/",
       "name":"HipotecaCompare España",
+      "publisher":{"@id":"https://hipotecacomparees.online/#organization"},
       "inLanguage":"es-ES"
     },
     {
@@ -53,6 +70,7 @@ gtag('config','G-G3GF3XS28J');
       "operatingSystem":"Web",
       "description":"Calculadora y comparador orientativo de hipotecas fijas, variables y mixtas en España.",
       "inLanguage":"es-ES",
+      "image":"https://hipotecacomparees.online/og-image.jpg",
       "isPartOf":{"@id":"https://hipotecacomparees.online/#website"},
       "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}
     }
@@ -76,11 +94,11 @@ gtag('config','G-G3GF3XS28J');
 <style>
 :root{--ink:#0a2023;--card:#123338;--card2:#0e2a2e;--line:#25545a;--gold:#cda43c;--gold-soft:#e9d093;--teal:#4fb8a6;--text:#f2f6f2;--muted:#9fbab4;--shadow:0 20px 55px #00000060;--display:'Fraunces',Georgia,serif;--body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--body);color:var(--text);background-color:var(--ink);background-image:radial-gradient(circle at 12% -10%,#1c4a4c 0%,transparent 45%),radial-gradient(circle at 100% 0%,#2b2013 0%,transparent 40%);position:relative}body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42'%3E%3Cpath d='M21 1 L41 21 L21 41 L1 21 Z' fill='none' stroke='%234fb8a6' stroke-width='1'/%3E%3Ccircle cx='21' cy='21' r='4.5' fill='none' stroke='%23cda43c' stroke-width='1'/%3E%3C/svg%3E")}.container{max-width:1180px;margin:auto;padding:24px;position:relative;z-index:1}:focus-visible{outline:2px solid var(--teal);outline-offset:2px}a{color:var(--teal)}
-header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 0 24px;border-bottom:1px solid var(--line)}.logo{font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.5px;color:var(--text);text-decoration:none}.logo span{color:var(--gold-soft);font-style:italic;font-weight:500}.topnav{display:flex;gap:14px;flex-wrap:wrap;align-items:center}.topnav a{color:var(--muted);text-decoration:none;font-size:12px}.topnav a:hover{color:var(--teal)}
+header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 0 24px;border-bottom:1px solid var(--line)}.logo{display:inline-flex;align-items:center;text-decoration:none}.logo img{display:block;width:min(310px,62vw);height:auto}.topnav{display:flex;gap:14px;flex-wrap:wrap;align-items:center}.topnav a{color:var(--muted);text-decoration:none;font-size:12px}.topnav a:hover{color:var(--teal)}
 .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;margin:28px 0 22px}.card{background:repeating-linear-gradient(180deg,transparent 0 27px,#ffffff07 27px 28px),linear-gradient(155deg,#123338 0%,#0c2427 100%);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}.hero .card{padding:34px;position:relative;overflow:hidden}.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.05;margin:0 0 16px;letter-spacing:-.5px}.hero p{color:var(--muted);font-size:16px;line-height:1.65;max-width:640px}.stats{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;margin-top:26px;align-items:stretch}.stat{background:#0a2427;border:1px solid var(--line);border-radius:4px;padding:14px 16px}.stat b{display:block;font-family:var(--mono);font-size:21px;color:var(--gold-soft)}.stat small{color:var(--muted);font-size:11.5px}.sello{width:104px;height:104px;border-radius:50%;border:2px solid var(--gold);outline:1px dashed var(--gold);outline-offset:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-7deg);background:#0a2427;font-family:var(--mono);text-align:center}.sello b{font-size:19px;color:var(--gold-soft)}.sello small{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}.sello em{font-style:normal;font-size:7px;color:var(--muted);margin-top:2px}
 .grid{display:grid;grid-template-columns:390px 1fr;gap:22px}.panel{padding:26px}.panel h2,.learn h2{font-family:var(--display);font-weight:600;margin:0 0 18px;font-size:23px}label{display:block;color:var(--muted);font-size:12.5px;margin:14px 0 7px}input,select{width:100%;background:#0a2124;border:1px solid var(--line);color:var(--text);border-radius:4px;padding:12px 13px;font-size:15px;font-family:var(--mono);outline:none}input:focus,select:focus{border-color:var(--teal)}select{font-family:var(--body)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;background:var(--gold);color:#1c1404;font-weight:700;font-family:var(--body);border-radius:4px;padding:10px 14px;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}.btn:hover{background:var(--gold-soft)}.result{background:linear-gradient(150deg,#173d40,#0d2528);border:1px solid var(--line);border-radius:4px;padding:22px;margin-top:20px;position:relative}.result::before{content:"ESTIMACIÓN";position:absolute;top:12px;right:16px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--teal)}.result .muted{color:var(--muted);font-size:13px}.result .big{font-family:var(--mono);font-size:36px;font-weight:600;color:var(--gold-soft);margin-top:4px}.mini{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}.mini div{background:#0a2124;border-radius:4px;padding:10px 12px;border:1px solid var(--line)}.mini span{display:block;color:var(--muted);font-size:10.5px}.mini b{font-family:var(--mono);font-size:14.5px}.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:16px}.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:#0a2124;color:var(--muted);padding:9px 14px;border-radius:999px;cursor:pointer}.chip.active{background:#173d40;border-color:var(--teal);color:var(--text)}.bank{display:grid;grid-template-columns:1.2fr .7fr .7fr .7fr auto;gap:12px;align-items:center;padding:16px 4px;border-top:1px solid var(--line)}.bankname{font-weight:700;display:flex;align-items:flex-start;gap:10px}.bankname small{display:block;color:var(--muted);font-weight:400;margin-top:3px;font-size:12px}.bankstamp{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:12px;color:var(--gold-soft);background:#0a2427}.rate{font-family:var(--mono);font-weight:600}.rate small{display:block;color:var(--muted);font-weight:400;font-size:10.5px;font-family:var(--body)}.notice{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.6;border-top:1px dashed var(--line);padding-top:14px}.notice b{color:var(--text)}.source{color:var(--teal)}
 .learn{margin:22px 0}.learn .lead{color:var(--muted);font-size:14px;line-height:1.6;max-width:760px}.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.guide{display:block;background:#0a2427;border:1px solid var(--line);border-radius:5px;padding:18px;text-decoration:none;color:var(--text)}.guide:hover{border-color:var(--teal)}.guide strong{display:block;font-size:15px;margin-bottom:6px}.guide span{display:block;color:var(--muted);font-size:12.5px;line-height:1.5}.faq-item{border-top:1px solid var(--line);padding:16px 2px}.faq-item h3{font-size:15px;margin:0 0 8px}.faq-item p{color:var(--muted);font-size:13.5px;line-height:1.65;margin:0}.glossary{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px}.glossary dt{font-family:var(--mono);font-weight:600;color:var(--gold-soft);font-size:13px;margin-top:12px}.glossary dd{color:var(--muted);font-size:13px;line-height:1.55;margin:4px 0 0}.prepay-results{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}.prepay-results .result{margin-top:0}footer{padding:26px 0 40px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);margin-top:10px;text-align:center;font-family:var(--mono)}footer .disclaimer{max-width:850px;margin:0 auto 14px;line-height:1.6;font-family:var(--body);font-size:11.5px}.legal-links{margin-top:10px}.legal-links a{color:var(--muted);text-decoration:none;margin:0 6px}.legal-links a:hover{color:var(--teal)}
-@media(max-width:850px){.hero,.grid{grid-template-columns:1fr}.bank{grid-template-columns:1fr 1fr}.bank .btn{grid-column:1/-1}.stats{grid-template-columns:1fr 1fr}.sello{grid-column:1/-1;justify-self:center}.guide-grid{grid-template-columns:1fr}.prepay-results,.glossary{grid-template-columns:1fr}.container{padding:15px}.topnav{display:none}}
+@media(max-width:850px){.hero,.grid{grid-template-columns:1fr}.bank{grid-template-columns:1fr 1fr}.bank .btn{grid-column:1/-1}.stats{grid-template-columns:1fr 1fr}.sello{grid-column:1/-1;justify-self:center}.guide-grid{grid-template-columns:1fr}.prepay-results,.glossary{grid-template-columns:1fr}.container{padding:15px}.topnav{display:none}.logo img{width:min(280px,80vw)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 
@@ -89,7 +107,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:20px;pa
 <body>
 <div class="container">
 <header>
-<a class="logo" href="/">Hipoteca<span>Compare</span> España</a>
+<a class="logo" href="/" aria-label="HipotecaCompare España - Inicio"><img src="/logo.PNG" alt="HipotecaCompare España" width="310" height="84" fetchpriority="high"></a>
 <nav class="topnav" aria-label="Navegación principal"><a href="#calc">Calculadora</a><a href="#comparador">Comparador</a><a href="/euribor-hoy.html">Euríbor</a><a href="#guias">Guías</a></nav>
 </header>
 
